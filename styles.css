@@ -35,7 +35,7 @@ h3, h4, h6 {
 }
 
 .mapimg {
-    width: 100%;
+    width: 300px;
     height: auto;
     border: black 2px solid;
 }
