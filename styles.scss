@@ -1,65 +1,89 @@
-@charset "UTF-8";
-p {
+%cuerpoTexto {
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: 20px;
-  margin-left: 20px; }
+  margin-left: 20px;
+}
 
 html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column; }
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
 
 p {
-  text-align: justify; }
+    @extend %cuerpoTexto;
+    text-align: justify;
+}
 
 h3, h6 {
-  margin-left: 20px; }
+    margin-left: 20px;
+}
 
 footer {
-  margin-top: 40px; }
+  margin-top: 40px;
+}
 
 iframe {
   border: none;
   width: 100%;
-  min-height: 460px; }
+  min-height: 460px;
+}
 
 #logoimg {
-  width: 200px;
-  height: 70px; }
+    width: 200px;
+    height: 70px;
+}
 
 .headerimg {
-  width: 100%;
-  height: auto; }
+    width: 100%;
+    height: auto;
+}
 
 .textos {
   padding: 5%;
-  padding-top: 1%; }
+  padding-top: 1%;
+}
 
 .clientes {
   padding-left: 5%;
   padding-right: 5%;
-  text-align: center; }
+  text-align: center;
+}
 
 /*Tamaño variable de video*/
+
 .video {
   width: 100px;
-  height: 50px; }
+  height: 50px;
+}
 
 /* CSS pantallas de 320px o superior */
 @media (min-width: 320px) {
+
   .video {
     width: 300px;
-    height: 200px; } }
+    height: 200px;
+  }
+
+}
+
 /* CSS pantalla 768px o superior */
 @media (min-width: 768px) {
+
   .video {
     width: 600px;
-    height: 450px; } }
+    height: 450px;
+  }
+
+}
+
 /*Tamaño variable de video*/
+
 /*Iconos de Redes Sociales*/
+
 .fa {
   padding: 5px;
   font-size: 20px;
@@ -67,80 +91,90 @@ iframe {
   text-align: center;
   text-decoration: none;
   margin: 5px 2px;
-  border-radius: 50%; }
+  border-radius: 50%;
+}
 
 .fa:hover {
-  opacity: 0.7; }
+    opacity: 0.7;
+}
 
 .fa-instagram {
   background: #b428a0;
-  color: white; }
+  color: white;
+}
 
 .fa-youtube {
   background: #bb0000;
-  color: white; }
+  color: white;
+}
 
 .fa-facebook {
   background: #3B5998;
-  color: white; }
+  color: white;
+}
 
 .fa-whatsapp {
   background: #26d020;
-  color: white; }
+  color: white;
+}
+
 
 /*Iconos de Redes Sociales*/
+
 /*NavBar Style*/
+
 /* change the background color */
 .navbar-custom {
-  background-color: #ffffff; }
-
+    background-color: #ffffff;
+}
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
-  color: #F827F6;
-  padding: 0.8rem 1rem; }
-
+    color: #F827F6;
+    padding: 0.8rem 1rem;
+}
 /* change the link color and add padding for height */
 .navbar-custom .navbar-nav .nav-link {
-  color: red;
-  padding: 1rem 1rem; }
-
+    color: red;
+    padding: 1rem 1rem;
+}
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-  color: #ffffff;
-  background-color: #ee4400;
-  /* add background-color to active links */ }
-
-.navbar-custom {
-  background-color: #ff5500; }
+    color: #ffffff;
+    background-color: #ee4400; /* add background-color to active links */
+}.navbar-custom {
+    background-color: #ff5500;
+}
 
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
-  color: rgba(255, 255, 255, 0.8); }
+    color: rgba(255,255,255,.8);
+}
 
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
-  color: red; }
+    color: red;
+}
 
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-  color: #ffffff; }
+    color: #ffffff;
+}
 
 /* for dropdown only - change the color of dropdown */
 .navbar-custom .dropdown-menu {
-  background-color: #ff5500; }
-
+    background-color: #ff5500;
+}
 .navbar-custom .dropdown-item {
-  color: #ffffff; }
-
+    color: #ffffff;
+}
 .navbar-custom .dropdown-item:hover,
 .navbar-custom .dropdown-item:focus {
-  color: #333333;
-  background-color: rgba(255, 255, 255, 0.5); }
+    color: #333333;
+    background-color: rgba(255,255,255,.5);
+}
 
 /*NavBar Style*/
-
-/*# sourceMappingURL=styles.css.map */
