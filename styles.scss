@@ -29,7 +29,7 @@ footer {
 iframe {
   border: none;
   width: 100%;
-  min-height: 460px;
+  min-height: 450px;
 }
 
 #logoimg {
@@ -51,6 +51,20 @@ iframe {
   padding-left: 5%;
   padding-right: 5%;
   text-align: center;
+}
+
+.listaconformato ul, li{
+  line-height: 1.8em !important;
+  margin: 0 0 10px !important;
+  overflow: inherit;
+  padding: 2px 0 2px 24px;
+  position: relative;
+}
+
+#whatsapp {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
 }
 
 /*Tamaño variable de video*/
