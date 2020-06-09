@@ -55,6 +55,28 @@ iframe {
   bottom: 0;
   right: 20px; }
 
+/* CSS pantallas de 320px o superior */
+@media (min-width: 320px) {
+  #whatsapp {
+    position: fixed;
+    bottom: 0;
+    right: 5px; } }
+/* CSS pantalla 768px o superior */
+@media (min-width: 768px) {
+  #whatsapp {
+    position: fixed;
+    bottom: 0;
+    right: 20px; } }
+/* CSS pantallas de 320px o superior */
+@media (min-width: 320px) {
+  #home {
+    padding-left: 1%;
+    padding-right: 1%; } }
+/* CSS pantalla 768px o superior */
+@media (min-width: 768px) {
+  #home {
+    padding-left: 20%;
+    padding-right: 20%; } }
 /*Tamaño variable de video*/
 .video {
   width: 100px;
