@@ -47,7 +47,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="home.html" target="contenido">Inicio <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="index.html" target="contenido">Inicio <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="tecnico.html" target="contenido">Servicio Técnico</a>
                         <a class="nav-item nav-link" href="helpdesk.html" target="contenido">Servicio Mesa de Ayuda</a>
                         <a class="nav-item nav-link" href="asistencia.html" target="contenido">Asistencia Remota</a>
@@ -57,17 +57,53 @@
             <!-- Navegacion -->
         </header>
         <main>
-            <!-- Contenido -->
-            <div>
-                <iframe id ="iframe1" name="contenido" src="home.html"></iframe>
+          <div class="container-fluid">
+              <div class="container-fluid" style="text-align: center;">
+                  <video class="video" controls poster="./img/poster.png">
+                    <source src="./video/intro.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <hr>
+              <div id="home" class="container-fluid" style="text-align: center;">
+                  <div>
+                      <div>
+                          <img src="./img/LogoNuevo.png" id="logoimg" alt="LOGO">
+                      </div>
+                      <h5>Servicios Informáticos</h5>
+                      <p style="font-style: italic;">Con más de 15 años de experiencia, HelpDesk Inteligente brinda soluciones informáticas globales dirigidas a pequeñas y medianas empresas. Buscamos convertirnos en el soporte IT externo que tu compañía necesita. Realizamos una auditoria completa del estado actual de tu infraestructura a fin de tomar las decisiones necesarias para lograr un rendimiento óptimo.</p>
+                      <br>
+                      <h7 style="font-weight: bold;">Contacto:</h7>
+                      <br>
+                      <h7>Teléfono / Whatsapp: 11-6105-9026</h7>
+                      <br>
+                      <h7>Correo Electrónico: helpdeskinteligente@gmail.com</h7>
+                      <br>
+                      <h7>Ubicación: Longchamps - Buenos Aires</h7>
+                      <br>
+                  </div>
+                  <hr>
+                  <div>
+                      <h2>Redes Sociales</h2>
+                      <a href="https://api.whatsapp.com/send?phone=5491161059026&text=Hola%20HelpDesk%20Inteligente" target="_blank" class="fa fa-whatsapp"></a>
+                      <a href="https://www.facebook.com/hdinteligente" target="_blank" class="fa fa-facebook"></a>
+                      <a href="https://www.instagram.com/helpdeskinteligente" target="_blank" class="fa fa-instagram"></a>
+                      <a href="https://www.youtube.com/channel/UCcx-_6VBgLG0jbmId_hYztg" target="_blank" class="fa fa-youtube"></a>
+                  </div>
+              </div>
+          </div>
+          <footer class="page-footer font-small bg-dark">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3 text-white">© 2020 Copyright:
+              <a href="#"> HelpDesk Inteligente</a> Diseño Web by Ariel Sabha
             </div>
-            <!-- Contenido -->
+            <!-- Copyright -->
+          </footer>
         </main>
-        <!--<div id="whatsapp">
+        <div id="whatsapp">
           <a href="https://api.whatsapp.com/send?phone=5491161059026&text=Hola%20HelpDesk%20Inteligente" target="_blank">
             <img src="./img/whatsapp.png" height="60px" alt="LOGO">
           </a>
-        </div>-->
+        </div>
         <!-- Welcome Script -->
         <script>
             window.onload = () => {
