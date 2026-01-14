@@ -1,0 +1,219 @@
+﻿:root {
+    --primary-color: #0f172a;
+    --accent-color: #3b82f6;
+    --text-color: #334155;
+    --bg-color: #ffffff;
+    --light-bg: #f8fafc;
+    --card-bg: #ffffff;
+    --nav-height: 80px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; } /* Evita scroll horizontal accidental */
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-padding { padding: 80px 0; }
+.bg-light { background-color: var(--light-bg); }
+.text-center { text-align: center; }
+
+/* --- HEADER --- */
+.site-header {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    /* Quitamos altura fija para permitir que crezca en móvil si es necesario */
+    min-height: var(--nav-height); 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
+}
+
+/* Logo Responsive */
+.logo-link { text-decoration: none; display: block; max-width: 100%; }
+.logo-svg svg { 
+    display: block; 
+    height: auto; 
+    width: 100%; 
+    max-width: 320px; /* Tamaño máximo original */
+    max-height: 50px;
+}
+
+/* Navegación */
+nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
+nav a { text-decoration: none; color: var(--text-color); font-weight: 500; transition: color 0.3s; }
+nav a:hover { color: var(--accent-color); }
+
+.btn-nav {
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap; /* Evita que el texto del botón se rompa */
+}
+.btn-nav:hover { opacity: 0.9; }
+
+/* --- HERO SECTION --- */
+.hero {
+    padding: 100px 0;
+    text-align: center;
+    background: radial-gradient(circle at top right, #eff6ff, #ffffff);
+}
+.hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem; color: var(--primary-color); }
+.highlight { color: var(--accent-color); }
+.hero p { font-size: 1.25rem; color: #64748b; max-width: 700px; margin: 0 auto 2rem; }
+.hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+.btn-primary, .btn-secondary {
+    padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: transform 0.2s; display: inline-block;
+}
+.btn-primary { background-color: var(--accent-color); color: white; border: none; }
+.btn-secondary { background-color: transparent; color: var(--primary-color); border: 1px solid #cbd5e1; }
+.btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+
+/* --- SERVICIOS (GRID) --- */
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header h2 { font-size: 2.25rem; color: var(--primary-color); margin-bottom: 10px; }
+
+.grid-layout { 
+    display: grid; 
+    /* Ajustamos el minmax a 280px para celulares pequeños */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px; 
+}
+
+.card {
+    background: var(--card-bg); padding: 40px 30px; border-radius: 12px; box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s; border: 1px solid transparent;
+}
+.card:hover {
+    transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); border-color: var(--accent-color);
+}
+.icon-box { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 20px; }
+
+/* --- TECNOLOGÍAS --- */
+.tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+.tech-tag { background: #e2e8f0; padding: 10px 20px; border-radius: 50px; font-weight: 600; color: var(--text-color); }
+
+/* --- FOOTER --- */
+footer { background-color: var(--primary-color); color: #94a3b8; padding: 40px 0; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.socials a { color: #94a3b8; margin-left: 20px; font-size: 1.2rem; transition: color 0.3s; }
+.socials a:hover { color: white; }
+
+/* --- UTILIDADES EXTRA --- */
+.bg-primary { background-color: var(--accent-color); }
+.text-white { color: white; }
+
+/* Botón WhatsApp */
+.btn-white {
+    background-color: white; 
+    color: var(--accent-color); 
+    border: none;
+    padding: 12px 30px; 
+    border-radius: 6px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* --- MODO OSCURO --- */
+body.dark-mode {
+    --primary-color: #f8fafc; --text-color: #cbd5e1; --bg-color: #0f172a; --light-bg: #1e293b; --card-bg: #1e293b; --shadow: none;
+}
+body.dark-mode .site-header { background-color: rgba(15, 23, 42, 0.95); border-bottom: 1px solid #334155; }
+body.dark-mode .hero { background: radial-gradient(circle at top right, #1e293b, #0f172a); }
+body.dark-mode .tech-tag { background: #334155; color: white; }
+body.dark-mode .btn-secondary { border-color: #475569; color: white; }
+
+/* Ajuste SVG Dark Mode */
+body.dark-mode .logo-svg text[fill="var(--primary-color)"] { fill: #f8fafc; }
+body.dark-mode .logo-svg path[stroke="var(--primary-color)"] { stroke: #f8fafc; }
+body.dark-mode .logo-svg rect[fill="var(--primary-color)"] { fill: #f8fafc; }
+body.dark-mode .logo-svg path[fill="var(--primary-color)"] { fill: #f8fafc; }
+
+/* Corrección Botón Contacto Dark Mode */
+body.dark-mode .btn-nav {
+    color: var(--bg-color) !important; 
+    font-weight: 700;
+}
+
+#theme-toggle { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--text-color); }
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE DESIGN)
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* Header: Apilar elementos verticalmente */
+    .site-header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        flex-direction: column; /* Menú vertical */
+        gap: 15px;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    nav a { display: block; padding: 5px 0; }
+    
+    /* Hero: Texto más pequeño y botones apilados */
+    .hero { padding: 60px 0; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1rem; }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%; /* Botones ancho completo */
+        text-align: center;
+    }
+
+    /* Ajustes generales de espaciado */
+    .section-padding { padding: 50px 0; }
+    .section-header h2 { font-size: 1.8rem; }
+    
+    /* Footer: Centrado en móvil */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .socials a { margin: 0 10px; }
+    
+    /* Botón WhatsApp en móvil */
+    .btn-white { width: 100%; text-align: center; }
+}
