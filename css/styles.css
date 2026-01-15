@@ -10,7 +10,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; } /* Evita scroll horizontal accidental */
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -29,7 +29,6 @@ body {
 .site-header {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    /* Quitamos altura fija para permitir que crezca en móvil si es necesario */
     min-height: var(--nav-height); 
     position: sticky;
     top: 0;
@@ -45,7 +44,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
+    flex-wrap: wrap;
 }
 
 /* Logo Responsive */
@@ -54,7 +53,7 @@ body {
     display: block; 
     height: auto; 
     width: 100%; 
-    max-width: 320px; /* Tamaño máximo original */
+    max-width: 320px;
     max-height: 50px;
 }
 
@@ -69,7 +68,7 @@ nav a:hover { color: var(--accent-color); }
     padding: 8px 20px;
     border-radius: 6px;
     transition: background-color 0.3s, color 0.3s;
-    white-space: nowrap; /* Evita que el texto del botón se rompa */
+    white-space: nowrap;
 }
 .btn-nav:hover { opacity: 0.9; }
 
@@ -97,7 +96,6 @@ nav a:hover { color: var(--accent-color); }
 
 .grid-layout { 
     display: grid; 
-    /* Ajustamos el minmax a 280px para celulares pequeños */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 30px; 
 }
@@ -153,13 +151,11 @@ body.dark-mode .hero { background: radial-gradient(circle at top right, #1e293b,
 body.dark-mode .tech-tag { background: #334155; color: white; }
 body.dark-mode .btn-secondary { border-color: #475569; color: white; }
 
-/* Ajuste SVG Dark Mode */
 body.dark-mode .logo-svg text[fill="var(--primary-color)"] { fill: #f8fafc; }
 body.dark-mode .logo-svg path[stroke="var(--primary-color)"] { stroke: #f8fafc; }
 body.dark-mode .logo-svg rect[fill="var(--primary-color)"] { fill: #f8fafc; }
 body.dark-mode .logo-svg path[fill="var(--primary-color)"] { fill: #f8fafc; }
 
-/* Corrección Botón Contacto Dark Mode */
 body.dark-mode .btn-nav {
     color: var(--bg-color) !important; 
     font-weight: 700;
@@ -167,28 +163,56 @@ body.dark-mode .btn-nav {
 
 #theme-toggle { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--text-color); }
 
+/* Botón Hamburguesa (Oculto en escritorio) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
 /* =========================================
    MEDIA QUERIES (RESPONSIVE DESIGN)
    ========================================= */
 
 @media (max-width: 768px) {
-    /* Header: Apilar elementos verticalmente */
-    .site-header .container {
-        flex-direction: column;
-        gap: 15px;
+    /* Mostrar botón hamburguesa */
+    .menu-toggle {
+        display: block;
     }
     
+    /* Header: Permitir que el menú baje a la siguiente línea */
+    .site-header .container {
+        flex-wrap: wrap; 
+    }
+    
+    /* El nav ocupa todo el ancho y baja al final */
+    nav {
+        width: 100%;
+        order: 3;
+    }
+
     nav ul {
-        flex-direction: column; /* Menú vertical */
+        display: none; /* OCULTO POR DEFECTO */
+        flex-direction: column;
         gap: 15px;
         width: 100%;
         text-align: center;
         padding: 10px 0;
+        background-color: var(--bg-color);
+        border-top: 1px solid #e2e8f0;
+        margin-top: 10px;
+    }
+
+    /* Clase para MOSTRAR el menú cuando JS lo active */
+    nav.active ul {
+        display: flex;
     }
     
     nav a { display: block; padding: 5px 0; }
     
-    /* Hero: Texto más pequeño y botones apilados */
     .hero { padding: 60px 0; }
     .hero h1 { font-size: 2.2rem; }
     .hero p { font-size: 1rem; }
@@ -199,21 +223,18 @@ body.dark-mode .btn-nav {
     }
     
     .btn-primary, .btn-secondary {
-        width: 100%; /* Botones ancho completo */
+        width: 100%;
         text-align: center;
     }
 
-    /* Ajustes generales de espaciado */
     .section-padding { padding: 50px 0; }
     .section-header h2 { font-size: 1.8rem; }
     
-    /* Footer: Centrado en móvil */
     .footer-content {
         flex-direction: column;
         text-align: center;
     }
     .socials a { margin: 0 10px; }
     
-    /* Botón WhatsApp en móvil */
     .btn-white { width: 100%; text-align: center; }
 }
