@@ -76,11 +76,51 @@ nav a:hover { color: var(--accent-color); }
 .hero {
     padding: 100px 0;
     text-align: center;
-    background: radial-gradient(circle at top right, #eff6ff, #ffffff);
+    position: relative;
+    overflow: hidden;
+    /* El fondo ahora lo maneja el carrusel */
+    background: var(--primary-color); 
 }
-.hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem; color: var(--primary-color); }
+
+/* Capa oscura (Overlay) para que el texto se lea bien sobre cualquier imagen */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.75));
+    z-index: 1;
+}
+
+/* Contenedor del Carrusel */
+.hero-bg-carousel {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+}
+
+/* Diapositivas individuales */
+.hero-slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: slideShow 25s linear infinite;
+}
+
+/* Retrasos para cada imagen (5 imágenes * 5s cada una = 25s total) */
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 5s; }
+.hero-slide:nth-child(3) { animation-delay: 10s; }
+.hero-slide:nth-child(4) { animation-delay: 15s; }
+.hero-slide:nth-child(5) { animation-delay: 20s; }
+
+/* Asegurar que el contenido esté por encima del fondo */
+.hero-content { position: relative; z-index: 2; }
+
+.hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem; color: #ffffff; }
 .highlight { color: var(--accent-color); }
-.hero p { font-size: 1.25rem; color: #64748b; max-width: 700px; margin: 0 auto 2rem; }
+.hero p { font-size: 1.25rem; color: #e2e8f0; max-width: 700px; margin: 0 auto 2rem; }
 .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
 .btn-primary, .btn-secondary {
@@ -89,6 +129,9 @@ nav a:hover { color: var(--accent-color); }
 .btn-primary { background-color: var(--accent-color); color: white; border: none; }
 .btn-secondary { background-color: transparent; color: var(--primary-color); border: 1px solid #cbd5e1; }
 .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+
+/* Ajuste para que el botón secundario se vea bien sobre el fondo oscuro */
+.hero .btn-secondary { color: white; border-color: rgba(255,255,255,0.5); }
 
 /* --- SERVICIOS (GRID) --- */
 .section-header { text-align: center; margin-bottom: 60px; }
@@ -147,9 +190,9 @@ body.dark-mode {
     --primary-color: #f8fafc; --text-color: #cbd5e1; --bg-color: #0f172a; --light-bg: #1e293b; --card-bg: #1e293b; --shadow: none;
 }
 body.dark-mode .site-header { background-color: rgba(15, 23, 42, 0.95); border-bottom: 1px solid #334155; }
-body.dark-mode .hero { background: radial-gradient(circle at top right, #1e293b, #0f172a); }
 body.dark-mode .tech-tag { background: #334155; color: white; }
 body.dark-mode .btn-secondary { border-color: #475569; color: white; }
+body.dark-mode .card { border-color: #334155; }
 
 body.dark-mode .logo-svg text[fill="var(--primary-color)"] { fill: #f8fafc; }
 body.dark-mode .logo-svg path[stroke="var(--primary-color)"] { stroke: #f8fafc; }
@@ -237,4 +280,16 @@ body.dark-mode .btn-nav {
     .socials a { margin: 0 10px; }
     
     .btn-white { width: 100%; text-align: center; }
+}
+
+/* =========================================
+   ANIMACIONES
+   ========================================= */
+
+@keyframes slideShow {
+    0% { opacity: 0; }
+    4% { opacity: 1; }   /* Entra rápido (1s) */
+    20% { opacity: 1; }  /* Se mantiene visible (4s) */
+    24% { opacity: 0; }  /* Sale rápido (1s) */
+    100% { opacity: 0; }
 }

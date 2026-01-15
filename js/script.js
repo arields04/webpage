@@ -1,50 +1,44 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('mobile-menu');
+    const mobileMenuBtn = document.getElementById('mobile-menu');
     const nav = document.querySelector('nav');
-    const menuLinks = document.querySelectorAll('nav ul li a');
-    const icon = menuToggle ? menuToggle.querySelector('i') : null;
-
-    // 1. Abrir / Cerrar menú al tocar el botón hamburguesa
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    
+    // --- Menú Móvil ---
+    if (mobileMenuBtn && nav) {
+        mobileMenuBtn.addEventListener('click', () => {
+            // Alternar la clase 'active' definida en CSS para mostrar/ocultar menú
             nav.classList.toggle('active');
-            
-            // Cambiar icono de hamburguesa a X
-            if (nav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
+        });
+
+        // Cerrar menú automáticamente al hacer clic en un enlace
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
         });
     }
 
-    // 2. Cerrar menú al hacer clic en un enlace
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            // Restaurar icono
-            if (icon) {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        });
-    });
-    
-    // 3. Modo Oscuro (Mantenemos la lógica si existía, o la agregamos básica)
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const themeIcon = themeToggle.querySelector('i');
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
+    // --- Modo Oscuro ---
+    if (themeToggleBtn) {
+        const icon = themeToggleBtn.querySelector('i');
+
+        // 1. Cargar preferencia guardada del usuario (si existe)
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            if(icon) icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        // 2. Evento al hacer clic
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+
+            // Cambiar icono (Luna <-> Sol)
+            if(icon) icon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+
+            // Guardar preferencia en el navegador
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     }
 });
