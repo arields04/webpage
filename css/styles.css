@@ -194,10 +194,10 @@ body.dark-mode .tech-tag { background: #334155; color: white; }
 body.dark-mode .btn-secondary { border-color: #475569; color: white; }
 body.dark-mode .card { border-color: #334155; }
 
-body.dark-mode .logo-svg text[fill="var(--primary-color)"] { fill: #f8fafc; }
-body.dark-mode .logo-svg path[stroke="var(--primary-color)"] { stroke: #f8fafc; }
-body.dark-mode .logo-svg rect[fill="var(--primary-color)"] { fill: #f8fafc; }
-body.dark-mode .logo-svg path[fill="var(--primary-color)"] { fill: #f8fafc; }
+/* Logo en modo oscuro: Forzar color claro de forma más general */
+body.dark-mode .logo-svg svg path,
+body.dark-mode .logo-svg svg text,
+body.dark-mode .logo-svg svg rect { fill: #f8fafc; }
 
 body.dark-mode .btn-nav {
     color: var(--bg-color) !important; 
@@ -224,37 +224,58 @@ body.dark-mode .btn-nav {
     /* Mostrar botón hamburguesa */
     .menu-toggle {
         display: block;
+        order: 3;
     }
     
     /* Header: Permitir que el menú baje a la siguiente línea */
     .site-header .container {
         flex-wrap: wrap; 
+        position: relative; /* Referencia para que el menú se posicione correctamente */
+    }
+
+    /* Ajuste del Logo para que no rompa el diseño en móviles */
+    .logo-link {
+        max-width: 180px; /* Limita el ancho para dejar espacio a los botones */
+        order: 1;
+        margin-right: auto; /* Empuja los botones hacia la derecha */
+    }
+
+    /* Botón de tema alineado junto al menú */
+    #theme-toggle {
+        order: 2;
+        margin-right: 15px;
     }
     
     /* El nav ocupa todo el ancho y baja al final */
     nav {
         width: 100%;
-        order: 3;
+        order: 4;
     }
 
     nav ul {
         display: none; /* OCULTO POR DEFECTO */
         flex-direction: column;
-        gap: 15px;
+        gap: 0;
         width: 100%;
         text-align: center;
-        padding: 10px 0;
+        padding: 0;
         background-color: var(--bg-color);
         border-top: 1px solid #e2e8f0;
-        margin-top: 10px;
+        
+        /* Menú flotante: Se superpone al contenido en lugar de empujarlo */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
     }
 
-    /* Clase para MOSTRAR el menú cuando JS lo active */
-    nav.active ul {
+    /* Corrección: Soporte para ambas formas de activar el menú (nav.active o ul.active) */
+    nav.active ul, nav ul.active {
         display: flex;
     }
     
-    nav a { display: block; padding: 5px 0; }
+    nav a { display: block; padding: 15px 20px; border-bottom: 1px solid #f1f5f9; }
     
     .hero { padding: 60px 0; }
     .hero h1 { font-size: 2.2rem; }
